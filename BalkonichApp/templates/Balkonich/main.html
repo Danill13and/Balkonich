@@ -1,0 +1,155 @@
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <title>Balkonich</title>
+</head>
+<body>
+    <div class="logo">
+        <img src="media/logo.png" alt="">
+    </div>
+    <div class="main">
+        <h1 class="title"> Наши услуги </h1>
+        <div class="content">
+            <div class="conteiner_for_card" id="conteiner_for_card">
+                <a href="{% url 'insulation' %}">
+                    <div class="card">
+                        <p>Утепление</p>
+                        <img src="media/uteplenie.jpg" alt="" id="image_of_card">
+                    </div>
+                </a>
+                <a href="{% url 'electrical_installation' %}">
+                    <div class="card">
+                        <p>Электромонтаж</p>
+                        <img src="media/Electromontage.jpg" alt="" class="image_of_card">
+                    </div>
+                </a>
+            </div>
+            <div class="conteiner_for_card" id="conteiner_for_card">
+                <a href="{% url 'interior_decoration' %}">
+                    <div class="card">
+                        <p>Внутренняя отделка</p>
+                        <img src="media/Vnutreniya_otdelka.jpg" alt="" class="image_of_card">
+                    </div>
+                </a>
+                <a href="{% url 'slopes' %}">
+                    <div class="card">
+                        <p>Откосы</p>
+                        <img src="media/Otkosi.jpg" alt="" class="image_of_card">
+                    </div>
+                </a>
+            </div>
+            <div class="conteiner_for_card">
+                <a href="{% url 'armored_film' %}">
+                    <div class="card">
+                        <p>Бронепленка</p>
+                        <img src="media/Plenka.jpg" alt="" class="image_of_card">
+                    </div>
+                </a>
+            </div>
+        </div>
+        <h1 class="title"> Наши роботы </h1>
+       <div class="carousel">
+        <span class="arrow" onclick="prevSlide()">&#10094;</span>
+        <img src="media/InCollage_20240514_200544545.jpg" id="img1" alt="Работа 1" onclick="openModal(this)">
+        <img src="media/InCollage_20240514_200705928.jpg" id="img2" alt="Работа 2" onclick="openModal(this)">
+        <img src="media/InCollage_20241017_154321649.jpg" id="img3" alt="Работа 3" onclick="openModal(this)">
+        <img src="media/InCollage_20241018_131652595.jpg" id="img4" alt="Работа 4" onclick="openModal(this)">
+        <span class="arrow" onclick="nextSlide()">&#10095;</span>
+        </div>
+        
+        <!-- Модальное окно -->
+        <div id="myModal" class="modal">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img class="modal-content" id="modalImage">
+        </div>
+        
+        <script>
+            const images = [
+                "media/InCollage_20240514_200544545.jpg",
+                "media/InCollage_20240514_200705928.jpg",
+                "media/InCollage_20241017_154321649.jpg",
+                "media/InCollage_20241018_131652595.jpg",
+                "media/IMG_20241016_204016_348.jpg",
+                "media/IMG_20241018_130020_230.jpg",
+                "media/IMG_20241018_130020_956.jpg",
+                "media/IMG_20241018_132347.jpg",
+                "media/IMG_20241018_142546.jpg",
+                "media/InCollage_20241018_132925218.jpg",
+                "media/InCollage_20241018_133708423.jpg",
+                "media/InCollage_20241018_135108162.jpg"
+            ];
+        
+            let currentIndex = 0;
+        
+            function showImages() {
+                document.getElementById('img1').src = images[currentIndex];
+                document.getElementById('img2').src = images[(currentIndex + 1) % images.length];
+                document.getElementById('img3').src = images[(currentIndex + 2) % images.length];
+                document.getElementById('img4').src = images[(currentIndex + 3) % images.length];
+            }
+        
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % images.length;
+                showImages();
+            }
+        
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                showImages();
+            }
+        
+            // Открытие модального окна с изображением
+            function openModal(img) {
+                document.getElementById("myModal").style.display = "flex";
+                document.getElementById("modalImage").src = img.src;
+            }
+        
+            // Закрытие модального окна
+            function closeModal() {
+                document.getElementById("myModal").style.display = "none";
+            }
+        
+            showImages();
+        </script>
+    <h1 class="title"> Наши партнеры </h1>
+    <div class="partners">
+        <div class="partner">
+            <img src="media/partner1.jpg" alt="" class="image_of_partner">
+        </div>
+        <div class="partner">
+            <img src="media/partner2.jpg" alt="" class="image_of_partner">
+        </div>
+        <div class="partner">
+            <img src="media/partner3.jpg" alt="" class="image_of_partner">
+        </div>
+        <div class="partner">
+            <img src="media/partner4.jpg" alt="" class="image_of_partner">
+        </div>
+        <div class="partner">
+            <img src="media/partner5.jpg" alt="" class="image_of_partner">
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer_part_left">
+            <p>Контактная информация:</p>
+            <p>+38 (095) 499-18-70</p>
+            <p>+38 (063) 759-15-64</p>
+            <div class="sosial_media">
+                <a href="https://www.instagram.com/balconich_kh?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">
+                    <img src="media/icons8-instagram.svg" alt="">
+                </a>
+                <a href="https://web.telegram.org/a/#1158997254">
+                    <img src="media/icons8-телеграмма-app.svg" alt="">
+                </a>
+                <img src="media/icons8-viber.svg" alt="">
+            </div>
+        </div>
+        <div class="advertising">
+            <img src="media/advertising.png" alt="" class="image_of_advertising">
+        </div>
+    </div>
+</body>
+</html>
